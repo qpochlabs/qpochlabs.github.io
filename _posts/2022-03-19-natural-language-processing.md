@@ -5,6 +5,7 @@ categories:
 tags:
   - nlp
   - semantic-analysis
+layout: single
 ---
 
 Natural Language processing is an area in Artificial intelligence dealing with multiple aspects of human centered Language processing.

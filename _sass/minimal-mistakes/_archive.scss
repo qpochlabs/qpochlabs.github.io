@@ -50,6 +50,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
   a[rel="permalink"]::before {
     content: '';
     position: absolute;
@@ -82,6 +87,7 @@
 
   a {
     position: relative;
+    
   }
 }
 
