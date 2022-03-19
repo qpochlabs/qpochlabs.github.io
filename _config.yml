@@ -104,8 +104,8 @@ analytics:
 author:
   name             : "Hari Prasad"
   avatar           : "/assets/images/hari_prasad.jpeg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "PG Scholar, Centre for A.I"
-  location         : "T.K.M College of Engineering<br>Kerala, India"
+  bio              : "PG Scholar, A.I"
+  location         : "Kerala, India"
   email            : "hari@qpoch.com"
   links:
     - label: "Email"
