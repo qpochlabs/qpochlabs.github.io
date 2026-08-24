@@ -193,6 +193,41 @@ span.highlight {
   color: #555;
 }
 
+/* Figures with captions */
+.post-content figure {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.post-content figcaption {
+  font-size: 13px;
+  color: #555;
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* Tables: outlined, compact, scrollable on small screens */
+.post-content table {
+  border-collapse: collapse;
+  margin: 15px 0;
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.post-content th,
+.post-content td {
+  border: 1px solid rgb(211, 211, 211);
+  padding: 6px 10px;
+  font-size: 13px;
+  text-align: left;
+}
+
+.post-content th {
+  background-color: rgb(245, 245, 245);
+  font-weight: 700;
+}
+
 /* Mobile: stack the header — logo on top, then title + nav, all centered */
 @media (max-width: 640px) {
   .header-row {
