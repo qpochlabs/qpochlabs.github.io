@@ -87,7 +87,7 @@ This is a 25-state tabular world with exact importance weights, exact ground tru
 
 The obvious follow-up is the same audit at D4RL scale: continuous control, function-approximation FQE, learned behavior policies, with the deliverable being per-estimator N* tables a practitioner can actually use. Two backlog directions from this run also survived: anytime-valid stopping rules for policy certification (confidence sequences that answer "how many eval rollouts before I can certify this policy" without fixing N in advance), and testing whether formal robustness certificates on policy networks actually predict return degradation under distribution shift, which nobody appears to have checked empirically.
 
-Everything above is reproducible from the run artifacts: two Python files (numpy and matplotlib only), fully seeded with MASTER_SEED=20260824, about 20 seconds on a laptop CPU. If a 95% interval can be wrong 100 times out of 100 in a world this small, it is worth 20 seconds to check yours.
+Everything above is reproducible from [the code on GitHub](https://github.com/qpochlabs/ope-coverage-audit): two Python files (numpy and matplotlib only), fully seeded with MASTER_SEED=20260824, about 20 seconds on a laptop CPU. If a 95% interval can be wrong 100 times out of 100 in a world this small, it is worth 20 seconds to check yours.
 
 ## References
 
