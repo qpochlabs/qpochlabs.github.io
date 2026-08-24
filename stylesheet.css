@@ -192,3 +192,38 @@ span.highlight {
   padding-left: 15px;
   color: #555;
 }
+
+/* Mobile: stack the header — logo on top, then title + nav, all centered */
+@media (max-width: 640px) {
+  .header-row {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .header-row td {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .header-logo {
+    text-align: center !important;
+    padding: 6% 2.5% 0 2.5% !important;
+  }
+
+  .header-logo img {
+    max-width: 150px !important;
+  }
+
+  .header-text {
+    padding-top: 2% !important;
+  }
+
+  .header-text p {
+    text-align: center !important;
+  }
+
+  .post-content {
+    width: 100% !important;
+  }
+}

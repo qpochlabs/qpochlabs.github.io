@@ -27,8 +27,8 @@
     <tr style="padding:0px">
       <td style="padding:0px">
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
+          <tr class="header-row" style="padding:0px">
+            <td class="header-text" style="padding:2.5%;width:63%;vertical-align:middle">
               <p style="text-align:left">
                 <name style="font-weight: 900;">{{ page.header_name | default: page.title | default: "Blog posts" }}</name>
               </p>
@@ -43,7 +43,7 @@
               </p>
               <hr>
             </td>
-            <td style="padding:2.5%;width:37%;vertical-align:middle;text-align:right">
+            <td class="header-logo" style="padding:2.5%;width:37%;vertical-align:middle;text-align:right">
               <a href="https://qpochlabs.github.io"><img src="{{ '/assets/images/logo.png' | relative_url }}" alt="qpoch" style="max-width:170px;width:100%;height:auto"></a>
             </td>
           </tr>
