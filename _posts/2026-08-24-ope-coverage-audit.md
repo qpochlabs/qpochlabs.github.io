@@ -65,7 +65,7 @@ The audit only earns its keep if it translates into guidance. N* is the smallest
 
 Width is where OPE redeems itself. Median 95% interval width relative to on-policy Monte Carlo at matched budget:
 
-| Estimator / CI | N* | Width vs on-policy, N=200 | N=1000 |
+| Estimator / CI | N* | Width vs on-policy (N=200) | Width vs on-policy (N=1000) |
 |---|---|---|---|
 | FQE / bootstrap | 200 | 0.35x | 0.31x |
 | DR / bootstrap | 200 | 0.51x | 0.59x |
