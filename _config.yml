@@ -1,7 +1,7 @@
 title: Hari Prasad - Blog
 author: Hari Prasad
 description: "Blog posts by Hari Prasad on AI research — perception, planning, sim2real and novel view synthesis."
-url: "https://qpochlabs.github.io"
+url: "https://qpoch.com"
 baseurl: ""
 
 permalink: /blog/:title/
