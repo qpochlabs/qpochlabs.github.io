@@ -1,26 +1,19 @@
 ---
-layout: splash
-permalink: /
-hidden: true
-author_profile: false
-<!-- header:
-  overlay_color: "#121212"
-  overlay_image: https://images.pexels.com/photos/8728556/pexels-photo-8728556.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 -->
+layout: default
+header_name: "Blog posts"
 ---
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-{% if paginator %}
-  {% assign posts = paginator.posts %}
-{% else %}
-  {% assign posts = site.posts %}
-{% endif %}
+      <tr>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          {% for post in site.posts %}
+          <a href="{{ post.url | relative_url }}">
+            <papertitle>{{ post.title }} ({{ post.date | date: "%B %Y" }})</papertitle>
+          </a> <br> {{ post.excerpt | strip_html | normalize_whitespace | truncate: 240 }}
+          {% unless forloop.last %}<br><br>{% endunless %}
+          {% endfor %}
+        </td>
+      </tr>
 
-{% assign entries_layout = page.entries_layout | default: 'list' %}
-<div class="entries-{{ entries_layout }}">
-  {% for post in posts %}
-    {% include archive-single.html type=entries_layout %}
-  {% endfor %}
-</div>
-
-{% include paginator.html %}
+    </tbody></table>

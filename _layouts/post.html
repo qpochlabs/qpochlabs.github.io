@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr>
+        <td class="post-content" style="padding:20px;width:75%;vertical-align:middle">
+          <p style="font-size:small;color:#888;margin-top:0;">{{ page.date | date: "%B %-d, %Y" }}</p>
+          {{ content }}
+          <br>
+          <p><a href="{{ '/' | relative_url }}">&larr; Back to all posts</a></p>
+        </td>
+      </tr>
+    </tbody></table>

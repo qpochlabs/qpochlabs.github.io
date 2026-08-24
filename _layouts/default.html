@@ -1,42 +1,73 @@
----
----
+<!DOCTYPE HTML>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!doctype html>
-<!--
-  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
-  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
-  Free for personal and commercial use under the MIT license
-  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
--->
-<html lang="{{ site.locale | slice: 0,2 | default: "en" }}" class="no-js">
-  <head>
-    {% include head.html %}
-    {% include head/custom.html %}
-  </head>
+  <title>{% if page.title %}{{ page.title }} - Hari Prasad{% else %}{{ site.title }}{% endif %}</title>
 
-  <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
-    {% include_cached skip-links.html %}
-    {% include_cached browser-upgrade.html %}
-    {% include_cached masthead.html %}
+  <meta name="author" content="Hari Prasad">
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <link rel="shortcut icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
+  <link rel="stylesheet" type="text/css" href="{{ '/stylesheet.css' | relative_url }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H95TZ2WCKM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-    <div class="initial-content">
-      {{ content }}
-    </div>
+    gtag('config', 'G-H95TZ2WCKM');
+  </script>
+</head>
 
-    {% if site.search == true %}
-      <div class="search-content">
-        {% include_cached search/search_form.html %}
-      </div>
-    {% endif %}
+<body>
+  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+    <tr style="padding:0px">
+      <td style="padding:0px">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr style="padding:0px">
+            <td style="padding:2.5%;width:63%;vertical-align:middle">
+              <p style="text-align:left">
+                <name style="font-weight: 900;">{{ page.header_name | default: page.title | default: "Blog posts" }}</name>
+              </p>
+              <p style="text-align:left">
+                <a href="https://hari.qpoch.com">Home</a> &nbsp/&nbsp
+                <a href="mailto:h4ri.prasad@gmail.com">Email</a> &nbsp/&nbsp
+                <a href="https://hari.qpoch.com/cv.html">CV</a> &nbsp/&nbsp
+                <a href="https://scholar.google.co.in/citations?user=mXTiylkAAAAJ">Google Scholar</a> &nbsp/&nbsp
+                <a href="https://linkedin.com/in/hpr">LinkedIn</a> &nbsp/&nbsp
+                <a href="https://github.com/hxri/">Github</a> &nbsp/&nbsp
+                <a href="https://qpoch.com">Blog</a>
+              </p>
+              <hr>
+            </td>
+            <td style="padding:2.5%;width:37%;vertical-align:middle;text-align:right">
+              <a href="https://qpoch.com"><img src="{{ '/assets/images/logo.png' | relative_url }}" alt="qpoch" style="max-width:170px;width:100%;height:auto"></a>
+            </td>
+          </tr>
+        </tbody></table>
 
-    <div id="footer" class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include_cached footer.html %}
-      </footer>
-    </div>
+        {{ content }}
 
-    {% include scripts.html %}
+<!-- Footer -->
 
-  </body>
+        <hr style="margin-bottom: 0;">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:0px;">
+              <br>
+              <p style="text-align:center;font-size:small;">
+                Checkout my other website <a href="https://hari.qpoch.com">hari.qpoch.com</a> <br>
+                Design and source code from <a href="https://jonbarron.info/">Jon Barron's website</a>
+              </p>
+            </td>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+  </table>
+</body>
+
 </html>
