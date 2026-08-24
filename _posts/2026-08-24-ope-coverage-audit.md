@@ -72,7 +72,10 @@ Width is where OPE redeems itself. Median 95% interval width relative to on-poli
 | WIS / bootstrap | 1000 | 0.82x | 0.88x |
 | IS / bootstrap | 200 | 9.5x | 10.6x |
 
-![Median 95% confidence interval width versus dataset size on a log axis, showing importance sampling intervals roughly ten times wider than the rest.](/assets/blog/ope-coverage-audit/width_vs_N.png)
+<figure>
+  <img src="/assets/blog/ope-coverage-audit/width_vs_N.png" alt="Median 95% confidence interval width versus dataset size on a log axis, showing importance sampling intervals roughly ten times wider than the rest.">
+  <figcaption>Figure 4 — Median 95% interval width vs dataset size (log scales). IS intervals are honest but roughly 10x wider than the rest; calibrated FQE and DR are the tightest.</figcaption>
+</figure>
 
 So the practitioner takeaway, scoped strictly to this toy task: below ~200 episodes, trust nothing. At 200+, prefer bootstrap FQE or DR; once calibrated, their intervals are 2 to 3x tighter than actually running the policy on-policy at the same episode budget. IS is calibrated at 200 but roughly 10x wider than just running the policy (honest but useless). Distrust WIS intervals until around 1000 episodes.
 
@@ -85,3 +88,14 @@ This is a 25-state tabular world with exact importance weights, exact ground tru
 The obvious follow-up is the same audit at D4RL scale: continuous control, function-approximation FQE, learned behavior policies, with the deliverable being per-estimator N* tables a practitioner can actually use. Two backlog directions from this run also survived: anytime-valid stopping rules for policy certification (confidence sequences that answer "how many eval rollouts before I can certify this policy" without fixing N in advance), and testing whether formal robustness certificates on policy networks actually predict return degradation under distribution shift, which nobody appears to have checked empirically.
 
 Everything above is reproducible from the run artifacts: two Python files (numpy and matplotlib only), fully seeded with MASTER_SEED=20260824, about 20 seconds on a laptop CPU. If a 95% interval can be wrong 100 times out of 100 in a world this small, it is worth 20 seconds to check yours.
+
+## References
+
+1. Voloshin, Le, Jiang, Yue (2021). *Empirical Study of Off-Policy Policy Evaluation for Reinforcement Learning* (COBS). NeurIPS Datasets & Benchmarks. [arXiv:1911.06854](https://arxiv.org/abs/1911.06854)
+2. Fu et al. (2021). *Benchmarks for Deep Off-Policy Evaluation* (DOPE). ICLR. [arXiv:2103.16596](https://arxiv.org/abs/2103.16596)
+3. Thomas & Brunskill (2016). *Data-Efficient Off-Policy Policy Evaluation for Reinforcement Learning*. ICML. [arXiv:1604.00923](https://arxiv.org/abs/1604.00923)
+4. Kostrikov & Nachum (2020). *Statistical Bootstrapping for Uncertainty Estimation in Off-Policy Evaluation*. [arXiv:2007.13609](https://arxiv.org/abs/2007.13609)
+5. Dai, Chow, Nachum, Li, Szepesvari, Schuurmans (2020). *CoinDICE: Off-Policy Confidence Interval Estimation*. NeurIPS. [arXiv:2010.11652](https://arxiv.org/abs/2010.11652)
+6. Taufiq, Ton, Cornish, Teh, Doucet (2022). *Conformal Off-Policy Prediction in Contextual Bandits*. NeurIPS. [arXiv:2206.04405](https://arxiv.org/abs/2206.04405)
+7. Hao, Ji, Duan, Lu, Szepesvari, Wang (2021). *Bootstrapping Fitted Q-Evaluation for Off-Policy Inference*. ICML. [arXiv:2102.03607](https://arxiv.org/abs/2102.03607)
+8. Foffano, Russo, Proutiere (2023). *Conformal Off-Policy Evaluation in Markov Decision Processes*. (No link — I could not verify the arXiv ID during the literature sweep.)
