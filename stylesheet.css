@@ -206,11 +206,12 @@ span.highlight {
   text-align: center;
 }
 
-/* Tables: outlined, compact, scrollable on small screens */
+/* Tables: outlined, centered, scrollable on small screens */
 .post-content table {
   border-collapse: collapse;
-  margin: 15px 0;
+  margin: 15px auto;
   display: block;
+  width: fit-content;
   max-width: 100%;
   overflow-x: auto;
 }
@@ -220,7 +221,7 @@ span.highlight {
   border: 1px solid rgb(211, 211, 211);
   padding: 6px 10px;
   font-size: 13px;
-  text-align: left;
+  text-align: center;
 }
 
 .post-content th {

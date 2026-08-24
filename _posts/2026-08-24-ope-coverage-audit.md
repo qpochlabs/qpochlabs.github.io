@@ -22,11 +22,19 @@ One honest caveat up front: this is not the first coverage number ever published
 
 The whole design hinges on one choice: an environment where the true policy value is exact, so any interval failure is unambiguously the interval's fault. I used a 5x5 slippery gridworld (slip probability 0.2, goal +1, pit -1, gamma 0.99, horizon 50). The target policy is a noisy greedy policy; the behavior policy that generates the data mixes in 30% uniform noise, with action probabilities known exactly, so importance weights are exact too. Ground truth comes from finite-horizon dynamic programming: V = 0.874020, cross-checked against 50,000 Monte Carlo rollouts (0.873701 +/- 0.000959, z = -0.33).
 
+<figure>
+  <img src="/assets/blog/ope-coverage-audit/gridworld-env.png" alt="A 5 by 5 grid with the start cell in the top-left corner, a pit worth minus one in the exact center, and the goal worth plus one in the bottom-right corner, alongside a slip-dynamics panel showing the intended move succeeding with probability 0.8 and slipping to each perpendicular direction with probability 0.1.">
+  <figcaption>Figure 1 — The environment: a 5×5 slippery gridworld with the start at state 0, a −1 pit dead center, and the +1 goal in the far corner. Every move goes as intended with probability 0.8 and slips sideways 0.1 each way.</figcaption>
+</figure>
+
 I made the return distribution deliberately safety-flavored: the target policy hits the pit 1.3% of the time, giving a skew of -8.3. Then: datasets of N in {10, 50, 200, 1000} behavior episodes, 100 independent replicates per N, four estimators (IS, WIS, DR, tabular FQE), percentile bootstrap (B=200) and normal-approximation intervals, plus an on-policy Monte Carlo baseline at matched budget. Monte Carlo error on each coverage number is about 2 to 3 points.
 
 The whole pipeline in one picture: the behavior policy generates the offline datasets along the top path, dynamic programming computes the exact truth along the bottom path, and the audit checks how often each estimator's interval contains that truth.
 
-![Pipeline diagram: a slippery gridworld feeds a behavior policy that generates offline datasets for four estimators with bootstrap confidence intervals, and a target policy whose exact value comes from dynamic programming; both paths converge on the coverage audit, which checks whether each 95% interval contains the true value over 100 replicates.](/assets/blog/ope-coverage-audit/experiment-pipeline.png)
+<figure>
+  <img src="/assets/blog/ope-coverage-audit/experiment-pipeline.png" alt="Pipeline diagram: a slippery gridworld feeds a behavior policy that generates offline datasets for four estimators with bootstrap confidence intervals, and a target policy whose exact value comes from dynamic programming; both paths converge on the coverage audit, which checks whether each 95% interval contains the true value over 100 replicates.">
+  <figcaption>Figure 2 — The audit pipeline: offline estimates flow along the top path, the exact truth along the bottom, and coverage is checked where they meet.</figcaption>
+</figure>
 
 Empirical coverage of nominal **95%** intervals:
 
@@ -40,7 +48,10 @@ Empirical coverage of nominal **95%** intervals:
 | FQE / bootstrap | **0.00** | **0.05** | 0.96 | 0.93 |
 | On-policy MC / normal | 0.29 | 0.38 | 0.90 | 0.92 |
 
-![Empirical coverage of nominal 95% confidence intervals versus dataset size for seven estimator and interval combinations, all falling well below the nominal line at small N.](/assets/blog/ope-coverage-audit/coverage_vs_N.png)
+<figure>
+  <img src="/assets/blog/ope-coverage-audit/coverage_vs_N.png" alt="Empirical coverage of nominal 95% confidence intervals versus dataset size for seven estimator and interval combinations, all falling well below the nominal line at small N.">
+  <figcaption>Figure 3 — Empirical coverage of nominal 90% and 95% intervals vs dataset size. FQE and DR bootstrap intervals collapse to near-zero coverage at small N; WIS is the last to recover.</figcaption>
+</figure>
 
 Not a single estimator-interval combination stayed within 5 points of nominal at all N <= 200. Under my pre-stated rule (miscalibration if any N <= 200 cell misses nominal by more than 10 points), miscalibration was demonstrated many times over.
 
