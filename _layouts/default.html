@@ -11,6 +11,35 @@
   <link rel="stylesheet" type="text/css" href="{{ '/stylesheet.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
+
+  <!-- Social cards -->
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:type" content="{% if page.id %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ page.image | default: '/assets/images/og-card.png' | absolute_url }}">
+  {% if page.id %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">{% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 }}">
+  <meta name="twitter:image" content="{{ page.image | default: '/assets/images/og-card.png' | absolute_url }}">
+  {% if page.id %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ page.title | jsonify }},
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+    "author": {"@type": "Person", "name": "{{ site.author }}", "url": "https://hari.qpoch.com"},
+    "publisher": {"@type": "Organization", "name": "qpoch", "logo": {"@type": "ImageObject", "url": "{{ '/assets/images/logo.png' | absolute_url }}"}},
+    "mainEntityOfPage": "{{ page.url | absolute_url }}",
+    "description": {{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | jsonify }},
+    "image": "{{ page.image | default: '/assets/images/og-card.png' | absolute_url }}"
+  }
+  </script>
+  {% endif %}
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-H95TZ2WCKM"></script>
   <script>
@@ -30,7 +59,7 @@
           <tr class="header-row" style="padding:0px">
             <td class="header-text" style="padding:2.5%;width:63%;vertical-align:middle">
               <p style="text-align:left">
-                <name style="font-weight: 900;">{{ page.header_name | default: page.title | default: "Blog posts" }}</name>
+                <h1 style="font-family:'Lato',Verdana,Helvetica,sans-serif;font-size:32px;font-weight:900;display:inline;margin:0;">{{ page.header_name | default: page.title | default: "Blog posts" }}</h1>
               </p>
               <p style="text-align:left">
                 <a href="https://hari.qpoch.com">Home</a> &nbsp/&nbsp
